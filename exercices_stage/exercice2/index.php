@@ -1,16 +1,16 @@
 <?php
 /*
 DEUXIEME PHASE DU PROCESSUS:
-l'utilisateur clique sur la nouvelle url ou la colle dans sa barre de recherce et appuie sur entrer:
-Le bout de code qui suit permet la redirection vers l'url raccourcie ou personnalisée: 
+l'utilisateur clique sur la nouvelle URL ou la colle dans sa barre de recherche et appuie sur entrer:
+Le bout de code qui suit permet la redirection vers l'URL raccourcie ou personnalisée: 
 */
-//Comme vue dans la première phase: l'adresse est composée de l'adresse de mon site internet suivi de /?url=(l'id de la nouvelle url)
-//Ainsi avec $_GET['url'] on peur récupérer l'id de la nouvelle url
+//Or l'adresse est composée de l'adresse de mon site internet suivi de /?url=(l'id de la nouvelle URL)
+//Ainsi avec $_GET['url'] on peut récupérer l'id de la nouvelle URL
 //on vérifie donc que nous somme bien dans la deuxième phase du processus:
 if(isset($_GET['url'])){
-    //Si oui: on récupère l'id de la nouvelle url
+    //Si oui: on récupère l'id de la nouvelle URL
     $id  = $_GET['url'];
-    //On se connecte ensuite à notre base de donnée:
+    //On se connecte ensuite à notre base de données:
     $servername = "localhost";
     $username = "id15058141_louikilix";
     $password = "Shoutman//92";
@@ -25,18 +25,18 @@ if(isset($_GET['url'])){
             exit();
         }
     $bdd -> set_charset("utf8");
-    //A l'aide d'une requette sql on récupère l'url de base associé à l'id de la nouvelle url dans la table ratatineur
+    //À l'aide d'une requête Sql on récupère l'URL de base associée à l'id de la nouvelle URL dans la table ratatineur
     $row = $bdd->query("SELECT longURL FROM ratatineur WHERE urlID = '$id'");
-    //On récupère cette url de base:
+    //On récupère cette URL de base:
     $url = $row->fetch_assoc()['longURL'];
-    //Et on redirige finalement l'utilisateur vers l'url de base:
+    //Et on redirige finalement l'utilisateur vers l'URL de base:
     header('Location: ' . $url);
 }
 
 /*
 PREMIERE PHASE DU PROCESSUS:
 l'utilisateur arrive sur la page de notre site internet pour la première fois:
-le code html suivant permet de générer une page indiquant à l'utilisateur comment raccourcir ou personalliser son url au travers de 2 formulaires.
+le code HTML suivant permet de générer une page indiquant à l'utilisateur comment raccourcir ou personnaliser son URL au travers de 2 formulaires.
 */
 ?>
 <html>
@@ -51,7 +51,7 @@ le code html suivant permet de générer une page indiquant à l'utilisateur com
         <h1> Ratatineur d'url </h1>
         <div class=mon_block >
             <div class=div>
-                <?php //formulaire pour raccourcir une url donnée ?>
+                <?php //formulaire pour raccourcir une URL donnée ?>
                 <form method="post" action="index.php">
                     <h5> Ratatinez ici votre URL </h5>
                     <input class= champs1 type="=text" name="longURL" placeholder="entrez ici l'URL à ratatiner"/><br>
@@ -59,7 +59,7 @@ le code html suivant permet de générer une page indiquant à l'utilisateur com
                 </form>
             </div>
             <div class=div>
-                <?php //formulaire pour personnaliser une url donnée ?>
+                <?php //formulaire pour personnaliser une URL donnée ?>
                 <form method="post" action="index.php">
                     <h2> Option: personnaliser votre url </h2>
                     <input class= champs2 type="=text" name="longURL" placeholder="entrez ici l'URL à personnaliser"/><br>
@@ -70,7 +70,7 @@ le code html suivant permet de générer une page indiquant à l'utilisateur com
             </div>
         </div>
     <?php
-    //connexion à la base de donnée
+    //connexion à la base de données
     $servername = "localhost";
     $username = "id15058141_louikilix";
     $password = "Shoutman//92";
@@ -86,20 +86,20 @@ le code html suivant permet de générer une page indiquant à l'utilisateur com
         }
     $bdd -> set_charset("utf8");
     
-    //Lorsque l'utilisateur a complété l'un des 2 formulaires, on traite les informations qu'il a entré
-    //Si l'utilisateur souhaite unquement raccourcir son url:
+    //Lorsque l'utilisateur a complété l'un des 2 formulaires, on traite les informations qu'il a entrées
+    //Si l'utilisateur souhaite unquement raccourcir son URL:
     if (isset($_POST['ratatineur']))
         {
             //On récupère son url à raccoursir
             $url=$_POST['longURL'];
             //On essaye de l'ouvrir avec @fopen($url,"r");
             $F=@fopen($url,"r");
-            //Si l'utilisateur a cliqué sur ratatiner sans rentrer d'url, on lui envoie un mesage d'erreur:
+            //Si l'utilisateur a cliqué sur ratatiner sans entrer d'URL, on lui envoie un medsage d'erreur:
             if (empty($url))
                 {
                     echo "<h3>erreur: vous n'avez pas rentré d'url</h3>";
                 }
-            //Si l'utilisateur a entré une url invalide (@fopen($url,"r") a renvoyé false), on lui envoie un mesage d'erreur:
+            //Si l'utilisateur a entré une URL invalide (@fopen($url,"r") a renvoyé false), on lui envoie un message d'erreur:
             elseif (!$F) 
                 {
                     echo "<h3>erreur: url invalide</h3>";
@@ -107,10 +107,10 @@ le code html suivant permet de générer une page indiquant à l'utilisateur com
             else
                 {
                     //Si aucune erreur n'a été detectée:
-                    //On ferme l'url qui a été ouverte pour sa verification de validité.
+                    //On ferme l'URL qui a été ouverte pour sa vérification de validité.
                     fclose($F);
                     //Et on traite l'url à raccoursir:
-                    //première étape: on vérifie à l'aide d'une requete SQL que cette url n'ait pas été déjà raccourcie en verrifiant qu'elle ne soit pas déjà dans notre base de donnée
+                    //première étape: on vérifie à l'aide d'une requête SQL que cette URL n'ait pas été déjà raccourcie en vérifiant qu'elle ne soit pas déjà dans notre base de données
                     $query = "SELECT * FROM ratatineur WHERE longURL='$url' ";
                     $result = $bdd->query($query);
                     //Si c'est le cas: on affiche l'url raccourcie correspondante:
@@ -125,9 +125,9 @@ le code html suivant permet de générer une page indiquant à l'utilisateur com
                     //Sinon on passe à la deuxième étape:
                     else 
                     {
-                        //On crée alléatoirement un identifiant pour l'url de l'utilisateur
+                        //On crée aléatoirement un identifiant pour l'URL de l'utilisateur
                         $id=mt_rand();
-                        //Tant que cette identifiant correspond déjà à une autre url (déja raccourci ou personalisé) de notre base de donnée on génère un identifiant différent
+                        //Tant que cet identifiant correspond déjà à une autre URL (déjà raccourci ou personnalisé) de notre base de données on génère un identifiant différent
                         $query2 = "SELECT * FROM ratatineur WHERE urlID='$id' ";
                         $result2 = $bdd->query($query2);
                         while (($result2->num_rows)>0)
@@ -135,12 +135,12 @@ le code html suivant permet de générer une page indiquant à l'utilisateur com
                                 $id=mt_rand();
                                 $result2 = $bdd->query($query2);
                             }
-                        //troisième étape: on construit l'url raccourcie: composée de:
-                            //l'url de mon site internet:https://ratatineurl.000webhostapp.com
-                            //suivi de /?url=(l'id de la nouvelle url)
-                        //=> Cela permettra la redirection vers notre site internet lorsque la nouvelle url sera mise dans la base de recherche=> On passera alors à la deuxième phase du processus
+                        //troisième étape: on construit l'URL raccourcie: composée de:
+                            //l'URL de mon site internet:https://ratatineurl.000webhostapp.com
+                            //suivie de /?url=(l'id de la nouvelle URL)
+                        //=> Cela permettra la redirection vers notre site internet lorsque la nouvelle URL sera mise dans la barre de recherche=> On passera alors à la deuxième phase du processus
                         $shorturl= 'https://ratatineurl.000webhostapp.com/?url='.$id;
-                        //quatrième étape: on l'enregistre dans notre base de donnée
+                        //quatrième étape: on l'enregistre dans notre base de données
                         $bdd->query('INSERT INTO ratatineur (longURL,shortURL,urlID) VALUES ("'.$url. '","'.$shorturl. '","'.$id. '")');
                         //dernière étape: on l'affiche à l'utilisateur
                         echo "<a class=url href='${shorturl}'> ${shorturl} </a>";
@@ -149,14 +149,14 @@ le code html suivant permet de générer une page indiquant à l'utilisateur com
                     }
                 }
         }
-    //Si l'utilisateur souhaite personalisé son url:
+    //Si l'utilisateur souhaite personnaliser son URL:
     if (isset($_POST['option']))
         {
             //On récupère son url à personaliser
             $url=$_POST['longURL'];
-            //On récupère l'identifiant personalisé de l'url que l'utilisateur a entré.
+            //On récupère l'identifiant personnalisé de l'URL que l'utilisateur a entrée.
             $urlperso=$_POST['idURLperso'];
-            //Puis processus de verrification similaire à celui précisé dans le cas d'un raccourcissement simple d'url
+            //Puis processus de vérification similaire à celui précisé dans le cas d'un raccourcissement simple d'URL
             $F=@fopen($url,"r");
             if (empty($url) or empty($urlperso) )
                 {
@@ -169,11 +169,11 @@ le code html suivant permet de générer une page indiquant à l'utilisateur com
             else
                 {
                     fclose($F);
-                    //Si aucune erreur n'est detectée, on traite l'url à raccoursir:
-                    //première étape: on vérifie à l'aide d'une requete SQL que cette url n'ait pas été déja raccourcie en verrifiant qu'elle ne soit pas déjà dans notre base de donnée
+                    //Si aucune erreur n'est détectée, on traite l'URL à raccourcir:
+                    //première étape: on vérifie à l'aide d'une requête SQL que cette URL n'ait pas été déjà raccourcie en vérifiant qu'elle ne soit pas déjà dans notre base de données
                     $query = "SELECT * FROM ratatineur WHERE longURL='$url' ";
                     $result = $bdd->query($query);
-                    //Si c'est le cas: on affiche l'url raccourcie correspondante
+                    //Si c'est le cas: on affiche l'URL raccourcie correspondante
                     if (($result->num_rows)>0)
                         {
                             $row = $result->fetch_assoc();
@@ -185,16 +185,16 @@ le code html suivant permet de générer une page indiquant à l'utilisateur com
                     //Sinon on passe à la deuxième étape:
                     else 
                         {
-                            //on construit l'url raccourcie de la meme manière que dans le cas d'un raccourcissement simple d'url mais cette fois-ci en utilisant l'id personnalisé de l'utilisateur
+                            //on construit l'URL raccourcie de la même manière que dans le cas d'un raccourcissement simple d'URL mais cette fois-ci en utilisant l'id personnalisé de l'utilisateur
                             $shorturl= 'https://ratatineurl.000webhostapp.com/?url='.$urlperso;
-                            //troisième étape: on l'enregistre dans notre base de donnée
+                            //troisième étape: on l'enregistre dans notre base de données
                             $bdd->query('INSERT INTO ratatineur (longURL,shortURL,urlID) VALUES ("'.$url. '","'.$shorturl. '","'.$urlperso. '")');
                             //dernière étape: on l'affiche à l'utilisateur
                             echo "<a class=url href='${shorturl}'> ${shorturl} </a>";
                         }
                 }                    
         }
-    /* Fermeture de la connexion à notre base de donnée */
+    /* Fermeture de la connexion à notre base de données */
     $bdd->close();
     ?>
     </body>
