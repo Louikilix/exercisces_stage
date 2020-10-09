@@ -1,4 +1,4 @@
-# Rapport concernant les exercices réalisées:
+# Rapport concernant les exercices réalisés:
 Ce github contient le fichier exercices_stage regroupant les 2 exercices qui m'ont été demandés de réaliser:
 
 ## exercice 1:</br>
