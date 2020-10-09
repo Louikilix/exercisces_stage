@@ -21,8 +21,15 @@ Le processus global se résume en 2 phases ainsi qu'une base de donnée:
   * si l'utilisateur décide de raccourcir son url:</br>
     1. on génère aléatoirement un identifiant jamais généré au paravant pour créer la nouvelle url</br>
     2. on construit l'url raccourcie: composée de:</br>
-          l'url de mon site internet:https://ratatineurl.000webhostapp.com</br>
-          suivi de /?url=(l'identifiant de la nouvelle url)"</br>
-          et enfin on stocke cette nouvelle url dans notre base de donnée en l'associant à l'url entrée par l'utilisateur
-     Ainsi cela permettra la redirection vers notre site internet lorsque la nouvelle url sera mise dans la base de recherche et on passera alors à la deuxième phase du processus
-   *si l'utilisateur décide de raccourcir son url:</br>
+          - l'url de mon site internet:https://ratatineurl.000webhostapp.com</br>
+          - suivi de /?url=(l'identifiant de la nouvelle url)"</br>
+          - et enfin on stocke cette nouvelle url dans notre base de donnée en l'associant à l'url entrée par l'utilisateur
+            Ainsi cela permettra la redirection vers notre site internet lorsque la nouvelle url sera mise dans la base de recherche et on passera alors à la deuxième phase du             processus
+   * si l'utilisateur décide de personnalisé son url:</br> 
+     On suit le même processus que pour raccourcir mais cette fois-ci l'identifiant de la nouvelle url sera généré par l'utilisateur
+   * Précision: une url ne peut être raccourcie ou personalisée qu'une seul fois
+- la deuxième phase consiste à gérer la redirection de l'utilisateur vers une url qu'il a raccourcie lorsque celui-ci a cliqué sur la nouvelle url raccourcie ou personalisée.</br>
+   * Lorsque l'utilisateur clique sur la nouvelle url, il est redirigé vers notre site comme déjà expliqué précedemment.
+   * Cependant ici, l'url de notre site finit par /?url=(identifiant de l'url vers laquelle il faut rediriger l'utilisateur).
+   * Ainsi avec $_GET['url'] on peur récupérer l'identifiant de l'url vers laquelle il faut rediriger l'utilisateur.
+   * Avec cette identifiant, on peut donc retrouver l'url correspondant à l'url raccourcie ou personalisée entrée par l'utilisateur et finalement redirigé ce dernier vers l'url de base. 
