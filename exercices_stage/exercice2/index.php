@@ -118,7 +118,6 @@ le code HTML suivant permet de générer une page indiquant à l'utilisateur com
                         {
                             $row = $result->fetch_assoc();
                             $shorturl=$row['shortURL'];
-                            echo "<h3> vous avez déjà fait raccourcir ou personaliser cette url:</h3>";
                             echo "<a class=url href='${shorturl}' > ${shorturl} </a>";
                             $result->free();
                         }
@@ -170,28 +169,43 @@ le code HTML suivant permet de générer une page indiquant à l'utilisateur com
                 {
                     fclose($F);
                     //Si aucune erreur n'est détectée, on traite l'URL à raccourcir:
-                    //première étape: on vérifie à l'aide d'une requête SQL que cette URL n'ait pas été déjà raccourcie en vérifiant qu'elle ne soit pas déjà dans notre base de données
-                    $query = "SELECT * FROM ratatineur WHERE longURL='$url' ";
+                    //première étape: on vérifie à l'aide d'une requête SQL l'id personnalisé donnée par l'utilisateur n'est pas déjà utilisé: en vérifiant qu'il ne soit pas déjà dans notre base de données
+                    $query = "SELECT * FROM ratatineur WHERE urlID='$urlperso' ";
                     $result = $bdd->query($query);
-                    //Si c'est le cas: on affiche l'URL raccourcie correspondante
                     if (($result->num_rows)>0)
                         {
-                            $row = $result->fetch_assoc();
-                            $shorturl=$row['shortURL'];
-                            echo "<h3> vous avez déjà fait raccourcir ou personaliser cette url:</h3>";
+                            //Si c'est le cas: nous rendons unique l'id personnalisé de l'utilisateur: 
+                            $nb_random=mt_rand();
+                            $urlpersoUnique=$urlperso.$nb_random;
+                            //Tant que cet identifiant correspond déjà à une autre URL (déjà personnalisé) de notre base de données on recommence:
+                            $query2 = "SELECT * FROM ratatineur WHERE urlID='$urlpersoUnique' ";
+                            $result2 = $bdd->query($query2);
+                            while (($result2->num_rows)>0)
+                                {
+                                    $nb_random=mt_rand();
+                                    $urlpersoUnique=$urlperso.$nb_random;
+                                    $result2 = $bdd->query($query2);
+                                }
+                            //on passe à la deuxième étape:
+                            //on construit l'URL raccourcie de la même manière que dans le cas d'un raccourcissement simple d'URL mais cette fois-ci en utilisant l'id personnalisé de l'utilisateur rendu unique
+                            $shorturl= 'https://ratatineurl.000webhostapp.com/?url='.$urlpersoUnique;
+                            //troisième étape: on l'enregistre dans notre base de données
+                            $bdd->query('INSERT INTO ratatineur (longURL,shortURL,urlID) VALUES ("'.$url. '","'.$shorturl. '","'.$urlpersoUnique. '")');
+                            //dernière étape: on l'affiche à l'utilisateur
                             echo "<a class=url href='${shorturl}' > ${shorturl} </a>";
-                            $result->free();
+                            $result2->free();
                         }
-                    //Sinon on passe à la deuxième étape:
+                    //Sinon on passe à la deuxième étape alternative:
                     else 
                         {
                             //on construit l'URL raccourcie de la même manière que dans le cas d'un raccourcissement simple d'URL mais cette fois-ci en utilisant l'id personnalisé de l'utilisateur
                             $shorturl= 'https://ratatineurl.000webhostapp.com/?url='.$urlperso;
-                            //troisième étape: on l'enregistre dans notre base de données
+                            //troisième étape alternative: on l'enregistre dans notre base de données
                             $bdd->query('INSERT INTO ratatineur (longURL,shortURL,urlID) VALUES ("'.$url. '","'.$shorturl. '","'.$urlperso. '")');
-                            //dernière étape: on l'affiche à l'utilisateur
+                            //dernière étape alternative: on l'affiche à l'utilisateur
                             echo "<a class=url href='${shorturl}'> ${shorturl} </a>";
                         }
+                    $result->free();
                 }                    
         }
     /* Fermeture de la connexion à notre base de données */
