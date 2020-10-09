@@ -102,7 +102,7 @@ le code HTML suivant permet de générer une page indiquant à l'utilisateur com
             //Si l'utilisateur a entré une URL invalide (@fopen($url,"r") a renvoyé false), on lui envoie un message d'erreur:
             elseif (!$F) 
                 {
-                    echo "<h3>erreur: url invalide</h3>";
+                    echo "<h3>erreur: URL invalide ou non publique</h3>";
                 }
             else
                 {
@@ -163,7 +163,7 @@ le code HTML suivant permet de générer une page indiquant à l'utilisateur com
                 }
             elseif (!$F) 
                 {
-                    echo "<h3>erreur: url invalide</h3>";
+                    echo "<h3>erreur: URL invalide ou non publique</h3>";
                 }
             else
                 {
