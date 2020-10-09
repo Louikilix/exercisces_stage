@@ -1,0 +1,109 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    }
+    
+
+body {
+    background-color: rgb(0, 225, 255); }
+
+h1 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 4vw; 
+    color:palevioletred;
+    margin-bottom:0vw;
+    text-align: center;}
+
+h2 {
+    font-size: 1.5vw; 
+    color:rgba(0, 119, 255, 0.63); 
+    text-align: left;
+    margin:1;}
+
+h3 {
+    font-size: 2vw; 
+    color: palevioletred ;
+    text-align: left;
+    margin-left:7vw;
+    margin-top:0vw;
+    margin-bottom:0vw;
+    text-align: center;}
+
+h4 {
+    font-size: 1.5vw; 
+    color:rgba(0, 119, 255, 0.63); 
+    text-align: bottom;
+    margin:0;}
+    
+h5 {
+    font-size: 2.5vw; 
+    color:rgba(0, 119, 255, 0.63); 
+    text-align: left;
+    margin:1;}
+
+p {
+    font-size: 1.5vw; 
+    color:rgba(0, 119, 255, 0.63); 
+    text-align: left;
+    margin:0;}
+
+
+.mon_block {
+    display: block;
+    width: 45vw;
+    height: 32vw;
+    margin: 0vw 20vw 0vw 30vw;
+    background: pink;
+    border-radius:10px;
+    overflow: auto;}
+
+.div{
+    margin: 0;
+    padding-left: 2vw;}
+
+.url{
+    display: inline-block; 
+    font-size: 2vw; 
+    color: palevioletred ; 
+    font-weight:bold; 
+    margin-top:0vw;
+    margin-left:30vw;
+    text-align: center;}
+
+.champs1{
+    padding:3px;
+    border:1px solid #F5C5C5;
+    border-radius:5px;
+    width:40vw;
+    box-shadow:1px 1px 2px #C0C0C0 inset; 
+    font-size:2vw;
+}
+
+.champs2{
+    padding:3px;
+    border:1px solid #F5C5C5;
+    border-radius:5px;
+    width:30vw;
+    box-shadow:1px 1px 2px #C0C0C0 inset; 
+    font-size:1.5vw;
+}
+
+.entrer1{
+    font-size:2vw;
+    width:40%;
+    margin:1;
+    border:1px solid #F5C5C5;
+    box-shadow:1px 1px 1px #D83F3D;
+    border-radius:5px;
+    border-width: 1px;
+    cursor:pointer;}
+
+.entrer2{
+    font-size:1.5vw;
+    width:30%;
+    margin:1;
+    border:1px solid #F5C5C5;
+    box-shadow:1px 1px 1px #D83F3D;
+    border-radius:5px;
+    border-width: 1px;
+    cursor:pointer;}
