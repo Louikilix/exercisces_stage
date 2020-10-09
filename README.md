@@ -8,10 +8,10 @@ Finalement seul le plus grand écart binaire est sauvegardé et affiché en fin 
 
 ## exercice 2:</br>
 Pour la réalisation du site internet de l'exercice 2, le code a été fait en html, php, sql et css.</br>
-le site internet ainsi que la base de donnée liée à se dernier sont hébérgés par 000webhost.com </br>
-lien vers le site internet: https://ratatineurl.000webhostapp.com </br>
+Le site internet ainsi que la base de donnée liée à se dernier sont hébérgés par 000webhost.com:  </br>
+lien vers le site internet: https://ratatineurl.000webhostapp.com .</br>
 Dans le fichier exercice2 sont regroupés un fichier .css et un fichier .php</br>
-le fichier .css gère le style de la page web générée par le fichier .php</br>
+Le fichier .css gère le style de la page web générée par le fichier .php</br>
 Le processus global se résume en 2 phases et repose sur l'utilisation d'une base de donnée:
 - la base de donnée permet de stocker les urls à raccourcir ou à personnaliser et les faire corespondre à des urls raccourcies ou personalisées à l'aide d'identifiants:</br>
   * son fonctionement se base sur la table ratatineur constitué de 4 colonnes:</br>
@@ -28,7 +28,7 @@ Le processus global se résume en 2 phases et repose sur l'utilisation d'une bas
           - et enfin on stocke cette nouvelle url dans notre base de donnée en l'associant à l'url à raccourcir entrée par l'utilisateur.
             Ainsi cela permettra la redirection vers notre site internet lorsque la nouvelle url sera mise dans la barre de recherche et on passera alors à la deuxième phase du processus.
    * si l'utilisateur décide de personnalisé son url:</br> 
-     On suit le même processus que pour raccourcir une url, mais cette fois-ci l'identifiant de la nouvelle url sera généré par l'utilisateur</br>
+     on suit le même processus que pour raccourcir une url, mais cette fois-ci l'identifiant de la nouvelle url sera généré par l'utilisateur</br>
    * Précision: une url ne peut être raccourcie ou personalisée qu'une seul fois. Si l'on s'apperçoit qu'une url a déjà était raccourcie ou personnalisée on affiche à l'utilisateur son url raccourcie ou personalisée corespondante </br></br>
 - la deuxième phase consiste à gérer la redirection de l'utilisateur vers une url qu'il a raccourcie ou personnaliser lorsque celui-ci a cliqué sur sa nouvelle url.</br>
    * Lorsque l'utilisateur clique sur la nouvelle url, il est redirigé vers notre site comme déjà expliqué précedemment.
