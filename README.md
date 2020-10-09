@@ -29,7 +29,6 @@ Le processus global se résume en 2 phases et repose sur l'utilisation d'une bas
             Ainsi cela permettra la redirection vers notre site internet lorsque la nouvelle URL sera mise dans la barre de recherche et on passera alors à la deuxième phase du processus.
    * Si l'utilisateur décide de personnaliser son URL:</br> 
      on suit le même processus que pour raccourcir une URL, mais cette fois-ci l'identifiant de la nouvelle URL sera généré par l'utilisateur</br>
-   * Précision: une URL ne peut être raccourcie ou personnalisée qu'une seule fois. Si l'on s'aperçoit qu'une URL a déjà était raccourcie ou personnalisée on affiche à l'utilisateur son URL raccourcie ou personnalisée correspondante. </br></br>
 - La deuxième phase consiste à gérer la redirection de l'utilisateur vers une URL qu'il a raccourcie ou personnalisée lorsque celui-ci a cliqué sur sa nouvelle URL.</br>
    * Lorsque l'utilisateur clique sur la nouvelle URL, il est redirigé vers notre site comme déjà expliqué précédemment.
    * Cependant ici, l'URL de notre site fini par /?url=(identifiant de l'URL vers laquelle il faut rediriger l'utilisateur).
