@@ -7,7 +7,7 @@ La stratégie globale consiste à parcourir la valeur binaire de l'entier entré
 Finalement seul le plus grand écart binaire est sauvegardé et affiché en fin de programme.</br></br></br>
 
 ## exercice 2:</br>
-Pour la réalisation du site internet de l'exercice 2, le code a été fait en html,php,sql et css.</br>
+Pour la réalisation du site internet de l'exercice 2, le code a été fait en html, php, sql et css.</br>
 le site internet ainsi que la base de donnée liée à se dernier sont hébérgés par 000webhost.com </br>
 lien vers le site internet: https://ratatineurl.000webhostapp.com </br>
 Dans le fichier exercice2 sont regroupés un fichier .css et un fichier .php</br>
