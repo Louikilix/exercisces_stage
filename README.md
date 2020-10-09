@@ -21,6 +21,6 @@ Le processus global se résume en 2 phases ainsi qu'une base de donnée:
   -si l'utilisateur décide de raccourcir son url:</br>
     -on génère aléatoirement un identifiant jamais généré au paravant pour créer la nouvelle url</br>
     -on construit l'url raccourcie: composée de:</br>
-          - l'url de mon site internet:https://ratatineurl.000webhostapp.com</br>
-          - suivi de /?url=(l'identifiant de la nouvelle url)</br>
+          **- l'url de mon site internet:https://ratatineurl.000webhostapp.com</br>
+          **-suivi de /?url=(l'identifiant de la nouvelle url)"</br>
      Ainsi cela permettra la redirection vers notre site internet lorsque la nouvelle url sera mise dans la base de recherche et on passera alors à la deuxième phase du processus
