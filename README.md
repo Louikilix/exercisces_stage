@@ -1,5 +1,5 @@
 # Rapport concernant les exercices réalisées:
-Ce github contient le fichier exercices_stage regroupant les 2 exercices qui m'ont été demandé de réaliser:
+Ce github contient le fichier exercices_stage regroupant les 2 exercices qui m'ont été demandés de réaliser:
 
 ## exercice 1:</br>
 Pour la réalisation du programme de l'exercice 1, le code a été fait en ruby afin de me familiariser avec ce langage.</br>
@@ -11,7 +11,7 @@ Pour la réalisation du site internet de l'exercice 2, le code a été fait en h
 le site internet ainsi que la base de donnée liée à se dernier sont hébérgés par 000webhost.com </br>
 lien vers le site internet: https://ratatineurl.000webhostapp.com </br>
 Dans le fichier exercice2 sont regroupés un fichier .css et un fichier .php</br>
-le fichier .css gère le style de la page web générée par le fichier .php
+le fichier .css gère le style de la page web générée par le fichier .php</br>
 Le processus global se résume en 2 phases et repose sur l'utilisation d'une base de donnée:
 - la base de donnée permet de stocker les urls à raccourcir ou à personnaliser et les faire corespondre à des urls raccourcies ou personalisées à l'aide d'identifiants:</br>
   * son fonctionement se base sur la table ratatineur constitué de 4 colonnes:</br>
