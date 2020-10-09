@@ -1,12 +1,12 @@
-## exercisces_stage
+## Rapport des exercisces réalisées:
 Ce github contient le fichier exercices_stage regroupant les 2 exercices qui m'ont été demandé de réaliser:
 
-*exercice 1:*</br>
+# exercice 1:</br>
 Pour la réalisation du programme de l'exercice 1, le code a été fait en ruby afin de me familiariser avec ce langage.</br>
 La stratégie globale consiste à parcourir la valeur binaire de l'entier entré par un utilisateur pour déterminer l'ensemble des écarts binaires de cet entier.</br> 
 Finalement seul le plus grand écart binaire est sauvegardé et affiché en fin de programme.</br></br></br>
 
-*exercice 2:*</br>
+# exercice 2:</br>
 Pour la réalisation du site internet de l'exercice 2, le code a été fait en html,php,sql et css.</br>
 le site internet ainsi que la base de donnée liée à se dernier sont hébérgés par 000webhost.com </br>
 lien vers le site internet: https://ratatineurl.000webhostapp.com </br>
